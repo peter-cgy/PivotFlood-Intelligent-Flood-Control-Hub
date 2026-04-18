@@ -1,0 +1,20 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"risk": "red", "depth": ">40cm", "radius": 150},
+      "geometry": {"type": "Point", "coordinates": [121.456, 31.034]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"risk": "orange", "depth": "27-40cm", "radius": 130},
+      "geometry": {"type": "Point", "coordinates": [121.453, 31.032]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"risk": "orange", "depth": "27-40cm", "radius": 100},
+      "geometry": {"type": "Point", "coordinates": [121.447, 31.030]}
+    }
+  ]
+}

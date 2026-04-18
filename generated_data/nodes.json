@@ -1,0 +1,9 @@
+[
+  {"id": "N1", "lat": 31.033, "lng": 121.456, "elevation": 3.5},
+  {"id": "N2", "lat": 31.031, "lng": 121.452, "elevation": 3.2},
+  {"id": "N3", "lat": 31.029, "lng": 121.449, "elevation": 3.8},
+  {"id": "N4", "lat": 31.0275, "lng": 121.452, "elevation": 2.5},
+  {"id": "N5", "lat": 31.0270, "lng": 121.449, "elevation": 2.3},
+  {"id": "R1", "lat": 31.0265, "lng": 121.452, "elevation": 1.8, "type": "outfall"},
+  {"id": "R2", "lat": 31.0265, "lng": 121.449, "elevation": 1.8, "type": "outfall"}
+]
