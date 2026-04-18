@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地盾 - ECNU洪涝韧性演示系统</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header id="app-header">
+    <div class="header-left">
+      <h1><span class="shield-icon">⬡</span> 地盾 <span class="subtitle">ECNU 校园洪涝韧性可视化</span></h1>
+    </div>
+    <div class="header-right">
+      <span class="campus-label">华东师范大学闵行校区</span>
+      <span class="status-dot"></span>
+      <span id="header-status">系统就绪</span>
+    </div>
+  </header>
+
+  <main id="app-main">
+    <div id="map-container">
+      <div id="map"></div>
+      <div id="layer-controls">
+        <div class="layer-title">图层控制</div>
+        <label><input type="checkbox" id="toggle-heatmap" checked> 风险热力图</label>
+        <label><input type="checkbox" id="toggle-pipes" checked> 排水管网</label>
+        <label><input type="checkbox" id="toggle-roads" checked> 道路</label>
+        <label><input type="checkbox" id="toggle-tweets"> 舆情标记</label>
+      </div>
+      <div id="map-legend">
+        <div class="legend-title">积水深度</div>
+        <div class="legend-item"><span class="legend-color" style="background:#ff2d2d"></span> &gt;40cm 严重</div>
+        <div class="legend-item"><span class="legend-color" style="background:#ff8c00"></span> 27-40cm 较重</div>
+        <div class="legend-item"><span class="legend-color" style="background:#ffd700"></span> 15-27cm 中等</div>
+        <div class="legend-item"><span class="legend-color" style="background:#00bfff"></span> &lt;15cm 轻微</div>
+      </div>
+    </div>
+
+    <aside id="side-panel">
+      <div class="panel-section">
+        <h3>情景选择</h3>
+        <select id="scenario-select">
+          <option value="scenario_20yr">20年一遇暴雨</option>
+          <option value="scenario_50yr">50年一遇暴雨</option>
+          <option value="intervention_A">开启泵站干预</option>
+        </select>
+      </div>
+
+      <div class="panel-section">
+        <h3>实时积水监测</h3>
+        <div id="depth-table"></div>
+      </div>
+
+      <div class="panel-section">
+        <h3>积水过程线</h3>
+        <div id="line-chart"></div>
+      </div>
+
+      <div class="panel-section">
+        <h3>韧性指数雷达图</h3>
+        <div id="radar-chart"></div>
+      </div>
+
+      <div class="panel-section">
+        <h3>决策建议</h3>
+        <div id="decision-box"></div>
+      </div>
+
+      <div class="panel-section">
+        <h3>舆情监测</h3>
+        <div id="tweet-list"></div>
+      </div>
+    </aside>
+  </main>
+
+  <footer id="timeline-bar">
+    <div class="timeline-wrapper">
+      <button id="play-btn" title="播放/暂停">▶</button>
+      <span class="time-label" id="time-display">T = 0 min</span>
+      <div class="slider-container">
+        <input type="range" id="time-slider" min="0" max="120" step="1" value="0">
+        <div class="time-marks">
+          <span>0</span><span>30</span><span>60</span><span>90</span><span>120 min</span>
+        </div>
+      </div>
+      <span class="rain-display" id="rain-display">降雨: 0 mm</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/dataLoader.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/decision.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

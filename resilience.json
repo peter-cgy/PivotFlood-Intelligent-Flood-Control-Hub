@@ -1,0 +1,8 @@
+[
+  {"from": "N1", "to": "N2", "length": 200, "diameter": 0.8},
+  {"from": "N2", "to": "N3", "length": 150, "diameter": 0.6},
+  {"from": "N2", "to": "N4", "length": 120, "diameter": 0.8},
+  {"from": "N3", "to": "N5", "length": 100, "diameter": 0.6},
+  {"from": "N4", "to": "R1", "length": 80, "diameter": 1.0},
+  {"from": "N5", "to": "R2", "length": 60, "diameter": 0.8}
+]

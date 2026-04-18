@@ -1,0 +1,5 @@
+[
+  {"name": "校医院", "lat": 31.029, "lng": 121.449, "type": "hospital"},
+  {"name": "地铁站（紫竹高新区站）", "lat": 31.025, "lng": 121.460, "type": "subway"},
+  {"name": "配电房", "lat": 31.032, "lng": 121.453, "type": "power"}
+]
