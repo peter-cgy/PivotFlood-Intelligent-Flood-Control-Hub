@@ -1,135 +1,90 @@
-# PivotFlood-Intelligent-Flood-Control-Hub
-PivotFlood is an intelligent decision hub for urban flood management that systematically integrates the World Model paradigm into disaster response. 
 ```markdown
 # PivotFlood — Intelligent Flood Control Hub
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.8+-green.svg)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
-
 **PivotFlood** is a world-model-based intelligent decision support system for urban flood management. It integrates a Physics-Informed Spatio-Temporal Graph Neural Network (PI-STGNN) with multi-modal real-time data (radar, IoT, social media) to achieve millisecond-level waterlogging prediction and intervention simulation.
 
-> 中文简介：PivotFlood 是一个基于世界模型的城市洪涝智能决策中枢，融合物理信息增强的时空图神经网络（PI-STGNN）与多模态实时数据，实现毫秒级积水预测与干预模拟。
+> 中文简介：基于世界模型的城市洪涝智能决策中枢，实现毫秒级积水预测与干预模拟。
 
 ---
 
 ## ✨ Features
 
-- **World Model Core** – Learns the state transition function of drainage networks: \( s_{t+1} = f(s_t, a_t, x_t) \)
-- **Millisecond Prediction** – Up to 5000× faster than traditional SWMM dynamic wave solver
-- **What-If Intervention** – Evaluate pump activation, gate control, or emergency dispatch in real time
-- **Multi-Modal Fusion** – Integrates radar imagery, IoT time series, and social media text
-- **Risk Visualization** – Heatmaps (red/orange/yellow/blue) and resilience radar charts
-- **Automatic Reports** – LLM-generated emergency plans and public alerts
-
----
-
-## 🏗️ System Architecture
-
-```
-Data Layer          → Model Layer                → Application Layer
-DEM /管网 / 降雨      → PI-STGNN (World Model)     → Web Dashboard
-IoT / 雷达 / 微博     → Multi-modal Encoder       → Mini Program
-历史案例 / 规则       → Knowledge Graph           → API
-```
+- World Model core (PI-STGNN) for state prediction
+- Millisecond inference, 5000× faster than SWMM
+- What-if intervention simulation (pump, gate, dispatch)
+- Multi-modal fusion: radar, IoT, social media
+- Risk heatmap & resilience radar chart
+- LLM-generated emergency reports
 
 ---
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- Python 3.8+
-- PyTorch & PyTorch Geometric
-- SWMM 5.2 (for data generation)
-
-### Installation
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/PivotFlood.git
+git clone https://github.com/peter-cgy/PivotFlood.git
 cd PivotFlood
-pip install -r requirements.txt
 ```
 
-### Run Demo
+### 2. Open the website
+
+Simply open `index.html` in your browser.
+
+Or use a local server (recommended):
 
 ```bash
-python backend/app.py
-# Open browser at http://localhost:8000
+# Python 3
+python -m http.server 8000
+
+# Then visit http://localhost:8000
 ```
 
 ---
 
-## 📁 Data Preparation
+## 📁 Project Structure
 
-The model requires:
-- **Subcatchments** (polygons with Area, Slope, Imperv)
-- **Manholes** (nodes with elevation)
-- **Conduits** (edges with length, diameter)
-- **Rainfall time series** (design storms or historical events)
-
-We provide a sample dataset for East China Normal University (Minhang Campus). To use your own city data, follow the [Data Guide](docs/data_guide.md).
+```
+PivotFlood/
+├── index.html          # Main entry
+├── css/                # Styles
+├── js/                 # JavaScript
+├── data/               # Sample data (GeoJSON, CSV)
+└── assets/             # Images, icons
+```
 
 ---
 
-## 🧠 Model Training
+## 🌍 Deployment
+
+### Temporary sharing (for testing)
 
 ```bash
-python train.py --config configs/pistgnn.yaml
+npx localtunnel --port 8000
 ```
 
-Key parameters:
-- `--node_features`: 水位, 流量, 静态属性
-- `--physics_weight`: 0.01 ~ 0.1 (balance data loss vs physics loss)
-- `--epochs`: 200
+You will get a temporary public URL.
 
-After training, the model is saved as `checkpoints/world_model.pth`.
+### Permanent hosting (static site)
 
----
-
-## 📊 Evaluation
-
-| Metric | Value (Test Set) |
-|--------|------------------|
-| RMSE (water depth) | 3.2 cm |
-| MAE | 2.5 cm |
-| Inference time | 35 ms per step |
-
-Compare with SWMM dynamic wave: **~5000× speedup**.
-
----
-
-## 📝 Citation
-
-If you use PivotFlood in your research, please cite:
-
-```bibtex
-@software{pivotflood2026,
-  author = {Chen Guoyi and Wang Hongwei and Wu Chenwei and Ren Yutong},
-  title = {PivotFlood: A World-Model-Based Urban Flood Decision Support System},
-  year = {2026},
-  url = {https://github.com/your-username/PivotFlood}
-}
-```
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+Upload the entire folder to:
+- **Vercel**: `vercel --prod`
+- **Netlify**: drag & drop
+- **GitHub Pages**: push to `gh-pages` branch
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License
 
 ---
 
 ## 📧 Contact
 
-Project Lead: Chen Guoyi  
-Email: 10253901414@stu.ecnu.edu.cn  
-Institution: East China Normal University
+**Project Lead**: Chen Guoyi  
+**Email**: 10253901414@stu.ecnu.edu.cn  
+**Institution**: East China Normal University
 
 ---
 
@@ -137,5 +92,5 @@ Institution: East China Normal University
 
 - Prof. Li Xia (consultant)
 - SWMM (EPA)
-- PyTorch & PyTorch Geometric communities
+- OpenStreetMap, Tianditu
 ```
